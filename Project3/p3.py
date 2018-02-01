@@ -355,7 +355,6 @@ def get_element(osm_file, tags=('node', 'way', 'relation')):
 def validate_element(element, validator, schema=SCHEMA):
     """Raise ValidationError if element does not match schema"""
     if validator.validate(element, schema) is not True:
-        print ('Started from da bottom now we r here!')
         print (type(validator.errors))
         field, errors = next(validator.errors.items())
         message_string = "\nElement of type '{0}' has the following errors:\n{1}"
@@ -414,9 +413,7 @@ def process_map(file_in, validate):
                     nodes_writer.writerow(el['node'])
                     node_tags_writer.writerows(el['node_tags'])
                 elif element.tag == 'way':
-                    #print ("\n\n&\n&\n&\n&\n&\n&\n&\n&\n&\n&\n&\n&\n&\n&\n&\n\n")
                     ways_writer.writerow(el['way'])
-                    #print ("\n\n$$$$$$$$$$$$$$$$$\n\n")
                     way_nodes_writer.writerows(el['way_nodes'])
                     way_tags_writer.writerows(el['way_tags'])
 
